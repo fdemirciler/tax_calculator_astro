@@ -1,0 +1,144 @@
+---
+
+---
+
+<section class="tax-brackets">
+  <h2 class="section-title">Tax Brackets</h2>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>From</th>
+          <th>To</th>
+          <th>Rate</th>
+        </tr>
+      </thead>
+      <tbody id="taxBracketsBody"> </tbody>
+    </table>
+  </div>
+</section>
+
+<style is:global>
+  .tax-brackets {
+    background: white;
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    padding-bottom: 0; /* Ensure no bottom padding */
+    /* Ensure proper viewport scaling */
+    @viewport {
+      width: device-width;
+      zoom: 1;
+    }
+
+    /* Mobile-first media queries */
+    @media (max-width: 640px) {
+      .tax-brackets {
+        border-radius: var(--radius-md); /* Slightly smaller on mobile */
+        margin: 0 var(--spacing-sm); /* Add side margins */
+      }
+
+      .table-wrapper {
+        -webkit-overflow-scrolling: touch; /* Smooth iOS scrolling */
+      }
+
+      table {
+        font-size: 0.75rem; /* Slightly smaller text */
+      }
+
+      th,
+      td {
+        padding: 0.3rem var(--spacing-md); /* Tighter padding */
+      }
+    }
+
+    /* Prevent text zoom on mobile */
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+  }
+
+  .section-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-gray-700);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-bottom: 1px solid var(--color-gray-200);
+    background: var(--color-gray-50);
+    margin: 0;
+  }
+
+  .table-wrapper {
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+    margin: 0 -1px;
+    width: calc(100% + 2px);
+    padding-bottom: 0; /* Remove wrapper bottom padding */
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .tax-brackets table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.75rem;
+    background: white;
+    border-left: 1px solid var(--color-gray-200);
+    border-right: 1px solid var(--color-gray-200);
+    height: 100%; /* Fill available height */
+    table-layout: fixed;
+  }
+
+  /* Full-width header background */
+  .tax-brackets thead tr {
+    background: var(--color-gray-50);
+  }
+
+  .tax-brackets thead {
+    background: var(--color-gray-50);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .tax-brackets th,
+  .tax-brackets td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px solid var(--color-gray-200);
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tax-brackets th {
+    position: sticky;
+    top: 0;
+    box-shadow: 0 1px 0 var(--color-gray-200);
+    font-weight: 500;
+    color: var(--color-gray-700);
+    background: var(--color-gray-50);
+  }
+
+  /* Numeric columns */
+  .tax-brackets td:first-child,
+  .tax-brackets td:nth-child(2) {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Last row adjustments */
+  .tax-brackets tr:last-child td {
+    border-bottom: none;
+    padding-bottom: 0.5rem; /* Slightly more bottom padding */
+  }
+
+  /* Hover state */
+  .tax-brackets tbody tr:hover td {
+    background-color: var(--color-gray-50);
+  }
+</style>
